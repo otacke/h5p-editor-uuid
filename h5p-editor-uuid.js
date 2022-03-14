@@ -15,7 +15,6 @@
 
   class UUIDWidget extends H5P.EventDispatcher {
     /**
-     *
      * @param {unknown} parent
      * @param {{name: string; type: string;}} field
      * @param {string | undefined} params
