@@ -1,0 +1,13 @@
+{
+  "title": "UUID Widget",
+  "machineName": "H5PEditor.UUIDWidget",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 0,
+  "runnable": 0,
+  "preloadedJs": [
+    {
+      "path": "h5p-editor-uuid.js"
+    }
+  ]
+}
