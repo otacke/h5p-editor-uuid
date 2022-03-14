@@ -19,11 +19,13 @@
      * @param {unknown} parent
      * @param {{name: string; type: string;}} field
      * @param {string | undefined} params
-     * @param {(newValue: string) => void} setValue
+     * @param {(field, newValue: string) => void} setValue
      */
     constructor(parent, field, params, setValue) {
       super();
 
+      console.log("uuid", {params})
+      
       const isTextField = field.type === "text";
       if (!isTextField) {
         console.warn(
@@ -33,7 +35,7 @@
 
       const needsID = !params;
       if (needsID) {
-        setValue(H5P.createUUID());
+        setValue(field, H5P.createUUID());
       }
 
       this.parent = parent;
