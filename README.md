@@ -1,6 +1,6 @@
 # h5p-editor-uuid
 
-An H5P widget that sets the value of the field to a UUID
+An H5P widget that sets the value of the field to a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
 
 ## How to use
 
