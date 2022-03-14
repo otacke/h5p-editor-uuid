@@ -24,8 +24,6 @@
     constructor(parent, field, params, setValue) {
       super();
 
-      console.log("uuid", {params})
-      
       const isTextField = field.type === "text";
       if (!isTextField) {
         console.warn(
