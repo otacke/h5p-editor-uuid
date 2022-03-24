@@ -33,3 +33,7 @@ library.json:
   ]
 }
 ```
+
+## Development
+
+Run `npm run build` to build the `h5p-editor-uuid.js` file before commiting.

@@ -1,0 +1,28 @@
+{
+  "name": "h5p-editor-uuid",
+  "version": "1.0.0",
+  "description": "An H5P widget that sets the value of the field to a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier). The widget does not render the input field.",
+  "main": "h5p-editor-uuid.js",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NDLA-H5P/h5p-editor-uuid.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NDLA-H5P/h5p-editor-uuid/issues"
+  },
+  "homepage": "https://github.com/NDLA-H5P/h5p-editor-uuid#readme",
+  "devDependencies": {
+    "h5p-types": "github:boyum/h5p-types",
+    "vite": "^2.8.6"
+  },
+  "dependencies": {
+    "h5p-utils": "github:boyum/h5p-utils"
+  }
+}
