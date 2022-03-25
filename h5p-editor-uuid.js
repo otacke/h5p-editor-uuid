@@ -1,1 +1,54 @@
-var o=Object.defineProperty;var l=(s,t,e)=>t in s?o(s,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):s[t]=e;var i=(s,t,e)=>(l(s,typeof t!="symbol"?t+"":t,e),e);var d;const c=(d=window.H5P)!=null?d:{};var p;const u=(p=window.H5PEditor)!=null?p:{};class n extends c.EventDispatcher{constructor(t,e,a,r){super();i(this,"field");i(this,"parent");i(this,"params");i(this,"setValue");i(this,"wrapper");this.wrapper=n.createWrapperElement(),this.parent=t,this.field=e,this.params=a,this.setValue=r}static createWrapperElement(){return document.createElement("div")}}(()=>{class s extends n{appendTo(){const{field:e,params:a,setValue:r}=this;e.type==="text"||console.warn(`The field \`${e.name}\` has the widget \`uuid\` set, but is of type \`${e.type}\`, not \`text\``),!a&&r(e,c.createUUID())}validate(){return!0}remove(){}}Object.assign(u,{UUIDWidget:s,widgets:{uuid:s}})})();
+// @ts-check
+
+(() => {
+  /**
+   * @type {{
+   *  EventDispatcher: typeof Function;
+   *  createUUID: () => string;
+   * }}
+   */
+  // @ts-expect-error H5P will be defined on `window` in an H5P context
+  const H5P = window.H5P;
+
+  // @ts-expect-error H5PEditor will be defined on `window` in an H5P Editor context
+  const H5PEditor = window.H5PEditor;
+
+  class UUIDWidget extends H5P.EventDispatcher {
+    /**
+     * @param {unknown} parent
+     * @param {{name: string; type: string;}} field
+     * @param {string | undefined} params
+     * @param {(field, newValue: string) => void} setValue
+     */
+    constructor(parent, field, params, setValue) {
+      super();
+
+      const isTextField = field.type === "text";
+      if (!isTextField) {
+        console.warn(
+          `The field \`${field.name}\` has the widget \`uuid\` set, but is of type \`${field.type}\`, not \`text\``
+        );
+      }
+
+      const needsID = !params;
+      if (needsID) {
+        setValue(field, H5P.createUUID());
+      }
+
+      this.parent = parent;
+      this.field = field;
+      this.params = params;
+      this.setValue = setValue;
+    }
+
+    appendTo() {}
+
+    validate() {
+      return true;
+    }
+
+    remove() {}
+  }
+
+  H5PEditor.UUIDWidget = H5PEditor.widgets.uuid = UUIDWidget;
+})();
