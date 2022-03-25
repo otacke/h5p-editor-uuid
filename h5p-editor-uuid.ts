@@ -1,9 +1,9 @@
-import { IH5PWidget } from "h5p-types";
+import { H5PFieldText, IH5PWidget } from "h5p-types";
 import { H5PWidget } from "h5p-utils/src/models/H5PWidget";
 import { H5P, H5PEditor } from "h5p-utils/src/utils/H5P.utils";
 
 (() => {
-  class UUIDWidget extends H5PWidget implements IH5PWidget {
+  class UUIDWidget extends H5PWidget<H5PFieldText> implements IH5PWidget {
     appendTo() {
       const { field, params, setValue } = this;
 
