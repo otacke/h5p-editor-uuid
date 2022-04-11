@@ -4,8 +4,8 @@
   "description": "An H5P widget that sets the value of the field to a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier). The widget does not render the input field.",
   "main": "h5p-editor-uuid.js",
   "scripts": {
-    "start": "vite",
-    "build": "vite build"
+    "start": "vite build --mode=development --watch --minify=false",
+    "build": "tsc --noEmit && vite build"
   },
   "repository": {
     "type": "git",
