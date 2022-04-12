@@ -15,5 +15,6 @@
     "noImplicitAny": true,
     "skipLibCheck": true
   },
-  "include": ["h5p-editor-uuid.ts"]
+  "include": ["h5p-editor-uuid.ts"],
+  "extends": "@tsconfig/strictest/tsconfig.json"
 }

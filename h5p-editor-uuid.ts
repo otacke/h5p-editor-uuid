@@ -1,4 +1,4 @@
-import { H5PFieldText, IH5PWidget } from "h5p-types";
+import type { H5PFieldText, IH5PWidget } from "h5p-types";
 import { H5PWidget } from "h5p-utils/src/models/H5PWidget";
 import { H5P, H5PEditor } from "h5p-utils/src/utils/H5P.utils";
 

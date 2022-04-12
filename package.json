@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/NDLA-H5P/h5p-editor-uuid#readme",
   "devDependencies": {
+    "@tsconfig/strictest": "^1.0.0",
     "h5p-types": "github:boyum/h5p-types",
     "vite": "^2.8.6"
   },
