@@ -13,6 +13,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noImplicitAny": true,
+    "skipLibCheck": true
   },
   "include": ["h5p-editor-uuid.ts"]
 }
