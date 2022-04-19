@@ -1,0 +1,50 @@
+on: [issue_comment]
+
+jobs:
+  bump-library:
+    name: Bump libary version
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Listen for PR Comments
+        uses: machine-learning-apps/actions-chatops@master
+        with:
+          TRIGGER_PHRASE: "/bump-major"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: prcommMajor
+
+      - name: Listen for PR Comments
+        uses: machine-learning-apps/actions-chatops@master
+        with:
+          TRIGGER_PHRASE: "/bump-minor"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: prcommMinor
+
+      - name: Listen for PR Comments
+        uses: machine-learning-apps/actions-chatops@master
+        with:
+          TRIGGER_PHRASE: "/bump-patch"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: prcommPatch
+
+      - name: Bump major version
+        if: steps.prcommMajor.outputs.BOOL_TRIGGERED == 'true'
+        uses: boyum/bump-h5p-version@latest
+        with:
+          type: major
+
+      - name: Bump minor version
+        if: steps.prcommMinor.outputs.BOOL_TRIGGERED == 'true'
+        uses: boyum/bump-h5p-version@latest
+        with:
+          type: minor
+
+      - name: Bump patch version
+        if: steps.prcommPatch.outputs.BOOL_TRIGGERED == 'true'
+        uses: boyum/bump-h5p-version@latest
+        with:
+          type: patch
