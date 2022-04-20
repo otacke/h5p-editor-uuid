@@ -3,54 +3,9 @@ on: [issue_comment]
 jobs:
   bump-library:
     name: Bump library version
-    if: github.event.comment.body == '/bump major' || github.event.comment.body == '/bump minor' || github.event.comment.body == '/bump patch'
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: "Check if user has write access"
-        uses: "lannonbr/repo-permission-check-action@2.0.0"
-        with:
-          permission: "write"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: React to comment
-        uses: dkershner6/reaction-action@v1 # https://github.com/marketplace/actions/comment-reaction
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          reaction: "hooray" # +1 | -1 | laugh | confused | heart | hooray | rocket | eyes
-
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Checkout Pull Request
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          PR_URL="${{ github.event.issue.pull_request.url }}"
-          PR_NUM=${PR_URL##*/}
-          echo "Checking out from PR #$PR_NUM based on URL: $PR_URL"
-          hub pr checkout $PR_NUM
-
-      - name: Bump major version
-        if: github.event.comment.body == '/bump major'
-        uses: boyum/bump-h5p-version@latest
-        with:
-          type: major
-
-      - name: Bump minor version
-        if: github.event.comment.body == '/bump minor'
-        uses: boyum/bump-h5p-version@latest
-        with:
-          type: minor
-
-      - name: Bump patch boyum/bump-h5p-version
-        if: github.event.comment.body == '/bump patch'
-        uses: boyum/bump-h5p-version@latest
-        with:
-          type: patch
-
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: bump library version
+      - name: Bump and commit library
+        uses: boyum/bump-and-commit-h5p-library
