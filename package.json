@@ -5,7 +5,9 @@
   "main": "h5p-editor-uuid.js",
   "scripts": {
     "start": "vite build --mode=development --watch --minify=false",
-    "build": "tsc --noEmit && vite build"
+    "build": "tsc --noEmit && vite build",
+    "lint": "prettier .",
+    "lint:fix": "prettier . --write"
   },
   "repository": {
     "type": "git",
@@ -21,9 +23,12 @@
   "devDependencies": {
     "@tsconfig/strictest": "^1.0.0",
     "h5p-types": "github:boyum/h5p-types",
+    "prettier": "^2.6.2",
+    "prettier-config": "github:boyum/prettier-config",
     "vite": "^2.8.6"
   },
   "dependencies": {
     "h5p-utils": "github:boyum/h5p-utils"
-  }
+  },
+  "prettier": "prettier-config"
 }
