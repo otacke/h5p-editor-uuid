@@ -2,7 +2,7 @@ import type { OutputAsset, OutputChunk } from "rollup";
 import { defineConfig, PluginOption } from "vite";
 
 const isOutputChunk = (
-  chunkOrAsset: OutputChunk | OutputAsset
+  chunkOrAsset: OutputChunk | OutputAsset,
 ): chunkOrAsset is OutputChunk => {
   return chunkOrAsset["code"] != null;
 };

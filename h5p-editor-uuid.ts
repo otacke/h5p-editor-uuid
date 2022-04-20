@@ -9,7 +9,7 @@ class UUIDWidget extends H5PWidget<H5PFieldText> implements IH5PWidget {
     const isTextField = field.type === "text";
     if (!isTextField) {
       console.warn(
-        `The field \`${field.name}\` has the widget \`uuid\` set, but is of type \`${field.type}\`, not \`text\``
+        `The field \`${field.name}\` has the widget \`uuid\` set, but is of type \`${field.type}\`, not \`text\``,
       );
     }
 
