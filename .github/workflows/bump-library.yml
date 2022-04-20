@@ -9,3 +9,5 @@ jobs:
     steps:
       - name: Bump and commit library
         uses: boyum/bump-and-commit-h5p-library@latest
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
