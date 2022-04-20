@@ -8,4 +8,4 @@ jobs:
 
     steps:
       - name: Bump and commit library
-        uses: boyum/bump-and-commit-h5p-library
+        uses: boyum/bump-and-commit-h5p-library@latest
