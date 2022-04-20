@@ -2,7 +2,7 @@ on: [issue_comment]
 
 jobs:
   bump-library:
-    name: Bump libary version
+    name: Bump library version
     if: github.event.comment.body == '/bump major' || github.event.comment.body == '/bump minor' || github.event.comment.body == '/bump patch'
 
     runs-on: ubuntu-latest
@@ -20,6 +20,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           reaction: "hooray" # +1 | -1 | laugh | confused | heart | hooray | rocket | eyes
+
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Bump major version
         if: github.event.comment.body == '/bump major'
