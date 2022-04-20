@@ -3,48 +3,31 @@ on: [issue_comment]
 jobs:
   bump-library:
     name: Bump libary version
+    if: github.event.comment.body == '/bump major' || github.event.comment.body == '/bump minor' || github.event.comment.body == '/bump patch'
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: Listen for PR Comments
-        uses: machine-learning-apps/actions-chatops@master
+      - name: React to comment
+        uses: dkershner6/reaction-action@v1 # https://github.com/marketplace/actions/comment-reaction
         with:
-          TRIGGER_PHRASE: "/bump-major"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        id: prcommMajor
-
-      - name: Listen for PR Comments
-        uses: machine-learning-apps/actions-chatops@master
-        with:
-          TRIGGER_PHRASE: "/bump-minor"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        id: prcommMinor
-
-      - name: Listen for PR Comments
-        uses: machine-learning-apps/actions-chatops@master
-        with:
-          TRIGGER_PHRASE: "/bump-patch"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        id: prcommPatch
+          token: ${{ secrets.GITHUB_TOKEN }}
+          reaction: "hooray" # +1 | -1 | laugh | confused | heart | hooray | rocket | eyes
 
       - name: Bump major version
-        if: steps.prcommMajor.outputs.BOOL_TRIGGERED == 'true'
+        if: github.event.comment.body == '/bump major'
         uses: boyum/bump-h5p-version@latest
         with:
           type: major
 
       - name: Bump minor version
-        if: steps.prcommMinor.outputs.BOOL_TRIGGERED == 'true'
+        if: github.event.comment.body == '/bump minor'
         uses: boyum/bump-h5p-version@latest
         with:
           type: minor
 
-      - name: Bump patch version
-        if: steps.prcommPatch.outputs.BOOL_TRIGGERED == 'true'
+      - name: Bump patch boyum/bump-h5p-version
+        if: github.event.comment.body == '/bump patch'
         uses: boyum/bump-h5p-version@latest
         with:
           type: patch
